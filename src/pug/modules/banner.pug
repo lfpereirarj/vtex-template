@@ -1,0 +1,14 @@
+for b in locals.bannerItems || []
+  .box-banner
+    a( href=((b.href||b.link||b.url)||"#") )
+      img( src=(b.src||b.img||b.image||b.banner||b) )/
+
+//-
+- var sample = [
+-   { href: '/', src: "/arquivos/sample.jpg"},
+-   { link: '/', img: "/arquivos/sample.jpg"},
+-   { url: '/', banner: "/arquivos/sample.jpg"},
+-   { image: "/arquivos/sample.jpg"},
+-   "/arquivos/sample.jpg",
+- ];
+//-

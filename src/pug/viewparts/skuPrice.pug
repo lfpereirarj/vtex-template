@@ -1,0 +1,13 @@
+include ../helpers.pug
+
++vtex-controller('<vtex.cmc:skuPrice />')
+  .plugin-preco
+    p.descricao-preco(productindex='0')
+      em.valor-de(productindex='0', style='display:none') De #[strong.skuListPrice(productindex='0') R$ 0,00]
+      em.valor-por(productindex='0') Por #[strong.skuBestPrice(productindex='0') R$ 1.498,50]
+      em.valor-dividido(productindex='0', style='display:block')
+        span
+          span ou #[label.skuBestInstallmentNumber(productindex='0') 10]X de
+          strong
+            label.skuBestInstallmentValue(productindex='0') R$ 149,85
+    p.preco-a-vista(productindex='0', style='display:none') Preço a vista: #[strong.skuPrice(productindex='0') R$ 1.498,50]

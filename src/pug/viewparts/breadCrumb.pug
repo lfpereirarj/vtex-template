@@ -1,0 +1,11 @@
+include ../helpers.pug
+
++vtex-controller('<vtex.cmc:breadCrumb />')
+  .bread-crumb(xmlns:v='http://rdf.data-vocabulary.org/#')
+    ul
+      li(typeof='v:Breadcrumb')
+        a(href='/', rel='v:url', property='v:title') Loja
+      li(typeof='v:Breadcrumb')
+        a(href='/Departamento.html', rel='v:url', property='v:title') Departamento
+      li.last(typeof='v:Breadcrumb')
+        a(href='/Departamento.html', rel='v:url', property='v:title') Categoria

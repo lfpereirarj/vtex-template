@@ -1,0 +1,49 @@
+include ../helpers.pug
+
+if (global.process.env.NODE_ENV === 'production')
+  - var title = '$product.HtmlEscapedName'
+  - var href = '$product.Uri'
+  - var dataProductId = '$product.Id'
+  - var listPrice = '$product.ListPrice'
+  - var bestPrice = '$product.BestPrice'
+  - var flags = '$product.HightLight'
+  - var getImageTag = '$product.GetImageTag(328, 213, "Lateral-1")'
+  - var getImageTag2 = '$product.GetImageTag(328, 213, "Superior-1")'
+
+else
+  - var title = 'Nome do produto'
+  - var href = '/produto.html'
+  - var dataProductId = Math.floor(Math.random() * 9999999)
+  - var listPrice = 'R$ 299,99'
+  - var bestPrice = 'R$ 199,99'
+  - var flags = '<p class="flag destaque">destaque</p>'
+  - var getImageTag = '<img src="https://via.placeholder.com/328x213" width="328" height="213" />'
+  - var getImageTag2 = '<img src="https://via.placeholder.com/328x213" width="328" height="213" />'
+
+a.shelf-product(title= title, href= href, data-product-id= dataProductId)
+  != flags
+  figure.shelf-product__image-container
+    != getImageTag
+    != getImageTag2
+
+    figcaption.shelf-product__caption
+      h4.shelf-product__title= title
+      .shelf-product__price
+        if ( global.process.env.NODE_ENV === 'production' )
+          != '\n#if ($product.IsInStock)'
+          != '\n  #if ($product.HasBestPrice)'
+          != '\n    <span class="shelf-product__price-list">' + listPrice + '</span>'
+          != '\n  #end'
+          != '\n  <span class="shelf-product__price-best">' + bestPrice + '</span>'
+          != '\n  #if ($product.NumbersOfInstallment > 1)'
+          != '\n    <span class="shelf-product__installments">'
+          != '\n      ${product.NumbersOfInstallment}X ${product.InstallmentValue}'
+          != '\n    </span>'
+          != '\n  #end'
+          != '\n#else'
+          != '\n  <span class="shelf-product__unavailable>Indisponível</span>"'
+          != '\n#end\n'
+        else
+          span.shelf-product__price-best= bestPrice
+          span.shelf-product__price-list= listPrice
+          span.shelf-product__installments 3X 57,90

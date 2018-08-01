@@ -1,0 +1,13 @@
+extends ./default.pug
+
+block head
+  include ../subtemplates/head
+
+block page
+  include ../subtemplates/header
+  main
+    block content
+  include ../subtemplates/footer
+
+block scripts
+  include ../subtemplates/bottom
